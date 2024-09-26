@@ -1,4 +1,4 @@
-def solution(n, wires):
+def my_solution(n, wires):
     neighbor = dict()
     for tower1, tower2 in wires:
         neighbor[tower1] = [*neighbor.get(tower1, []), tower2]
@@ -19,5 +19,24 @@ def solution(n, wires):
         
         if result == 0:
             break
+        
+    return result
+
+# 다른 풀이 참고
+def solution(n, wires):
+    result = n
+    
+    # wire 하나를 제거한 wires list
+    rest_wires_list = list(wires[i+1:] + wires[:i] for i in range(len(wires)))
+    
+    for rest_wires in rest_wires_list:
+        wires_set = set(rest_wires[0])
+        for _ in rest_wires:    # 모든 연결을 찾기 위해 rest_wires 만큼 반복
+            for wire in rest_wires: # wire마다 연결 찾기
+                if set(wire) & wires_set:   # 교집합이 존재 = 연결되어 있다
+                    wires_set.update(wire)  # 추가
+                    
+        result = min(result, abs(2 * len(wires_set) - n))
+        if result == 0: break   # 최선의 정답
         
     return result
