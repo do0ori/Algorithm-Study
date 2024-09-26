@@ -1,4 +1,5 @@
-def my_solution(n, wires):
+# 내 풀이가 더 빠르다
+def solution(n, wires):
     neighbor = dict()
     for tower1, tower2 in wires:
         neighbor[tower1] = [*neighbor.get(tower1, []), tower2]
@@ -8,22 +9,20 @@ def my_solution(n, wires):
     for tower1, tower2 in wires:
         visited = [tower2]
         stack = [tower1]
-        while stack:
+        while stack:    # 모든 연결 찾기
             tower = stack.pop()
             if tower not in visited:
                 visited.append(tower)
             neighbors = [n for n in neighbor[tower] if n not in visited]
             stack.extend(neighbors)
             
-        result = min(result, abs(n - 2 * (len(visited) - 1)))
-        
-        if result == 0:
-            break
+        result = min(result, abs(n - 2 * (len(visited) - 1)))   # 추가한 tower2는 빼줘야하므로 len(visited) - 1
+        if result == 0: break   # 최선의 정답
         
     return result
 
 # 다른 풀이 참고
-def solution(n, wires):
+def other_solution(n, wires):
     result = n
     
     # wire 하나를 제거한 wires list
