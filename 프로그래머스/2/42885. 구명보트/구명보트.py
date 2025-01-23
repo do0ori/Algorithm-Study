@@ -9,4 +9,5 @@ def solution(people, limit):
         
         left += 1
     
+    # 짝지어 나가므로 left가 곧 boat 수
     return left
