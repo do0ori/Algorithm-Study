@@ -1,4 +1,21 @@
+"""
+가능하면 앞사람에게 먼저 빌려줘도 충분
+"""
 def solution(n, lost, reserve):
+    # 여벌 체육복을 가져온 학생이 도난당한 경우를 처리
+    reserve_set = set(reserve) - set(lost)
+    lost_set = set(lost) - set(reserve)
+
+    # 체육복 빌려주기
+    for student in sorted(reserve_set):
+        if student - 1 in lost_set:  # 앞번호 학생에게 빌려줌
+            lost_set.remove(student - 1)
+        elif student + 1 in lost_set:  # 뒷번호 학생에게 빌려줌
+            lost_set.remove(student + 1)
+
+    return n - len(lost_set)
+
+def greedy_solution(n, lost, reserve):
     sportswear = [1] * (n + 1)
     for r in reserve: sportswear[r] += 1
     for l in lost: sportswear[l] -= 1
