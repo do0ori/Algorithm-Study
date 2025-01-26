@@ -1,17 +1,15 @@
-from collections import defaultdict
+from collections import Counter
 
 
 def solution(k, tangerine):
-    tangerine_cnt = defaultdict(int)
-    for t in tangerine:
-        tangerine_cnt[t] += 1
+    tangerine_cnt = Counter(tangerine)
     
     min_type = 0
-    for size, cnt in sorted(tangerine_cnt.items(), key=lambda x: x[1],reverse=True):
-        if k > 0:
-            k -= cnt
-            min_type += 1
-        else:
+    for cnt in sorted(tangerine_cnt.values(), reverse=True):
+        k -= cnt
+        min_type += 1
+        
+        if k <= 0:
             break
     
     return min_type
