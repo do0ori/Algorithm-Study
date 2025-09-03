@@ -1,5 +1,6 @@
 from collections import deque
 
+# y -> x 방향
 def solution(x, y, n):
     visited = set([y])
     queue = deque([(y, 0)])
