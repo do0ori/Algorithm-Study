@@ -31,18 +31,6 @@ class DoublyLinkedList:
             self.head.prev = new_node
         else:
             self.tail = new_node
-            
-        self.head = new_node
-        self.length += 1
-    
-    def push_front(self, new_data):
-        new_node = Node(new_data)
-        new_node.next = self.head
-
-        if self.head is not None:
-            self.head.prev = new_node
-        else:
-            self.tail = new_node  # 비어있던 경우
 
         self.head = new_node
         self.length += 1
@@ -55,11 +43,10 @@ class DoublyLinkedList:
 
         if self.tail != None:
             self.tail.next = new_node
-            self.tail = new_node
         else:
             self.head = new_node
-            self.tail = new_node
         
+        self.tail = new_node        
         self.length += 1
     
     def pop_front(self):
@@ -95,10 +82,10 @@ class DoublyLinkedList:
             self.length -= 1
     
     def size(self):
-        return self.length
+        print(self.length)
     
     def empty(self):
-        return 1 if self.length == 0 else 0
+        print(1 if self.length == 0 else 0)
     
     def front(self):
         print(self.head.data)
