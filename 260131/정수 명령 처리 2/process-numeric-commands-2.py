@@ -21,7 +21,7 @@ class Queue:
         self.dq.append(num)
     
     def pop(self):
-        print(self.dq.pop())
+        print(self.dq.popleft())
     
     def size(self):
         print(len(self.dq))
