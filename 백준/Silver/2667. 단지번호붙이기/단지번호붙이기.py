@@ -2,7 +2,7 @@ import sys
 
 input = sys.stdin.readline
 N = int(input())
-map = [[int(n) for n in input().strip()] for _ in range(N)]
+map = [list(map(int, input().strip())) for _ in range(N)]
 
 
 def dfs(r, c):
