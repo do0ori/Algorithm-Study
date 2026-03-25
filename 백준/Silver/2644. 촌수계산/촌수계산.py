@@ -5,31 +5,28 @@ input = sys.stdin.readline
 N = int(input())
 chon1, chon2 = map(int, input().split())
 M = int(input())
-family = {i: [] for i in range(1, N + 1)}
+family = [[] for _ in range(N + 1)]
 for _ in range(M):
     x, y = map(int, input().split())
     family[x].append(y)
     family[y].append(x)
 
-visited = [False] * (N + 1)
-
 
 def bfs(start, end):
-    chon = 0
-    visited[start] = True
+    visited = [0] * (N + 1)
+    visited[start] = 1
     q = deque([start])
 
     while q:
         for _ in range(len(q)):
-            p = q.popleft()
-            if p == end:
-                return chon
+            c = q.popleft()
+            if c == end:
+                return visited[c] - 1
 
-            for adj in family[p]:
+            for adj in family[c]:
                 if not visited[adj]:
-                    visited[adj] = True
+                    visited[adj] = visited[c] + 1
                     q.append(adj)
-        chon += 1
 
     return -1
 
