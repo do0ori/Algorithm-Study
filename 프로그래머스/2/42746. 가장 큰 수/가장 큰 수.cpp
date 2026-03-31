@@ -12,5 +12,6 @@ string solution(vector<int> numbers) {
     for (auto n : numbers) {
         answer += to_string(n);
     }
+    // 모든 숫자가 0인 경우 0 하나만 반환해야 함
     return answer[0] == '0' ? "0" : answer;
 }
