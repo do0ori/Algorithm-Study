@@ -8,23 +8,23 @@ int solution(vector<int> priorities, int location) {
         q.push({priorities[i], i});
     }
     
+    sort(priorities.begin(), priorities.end(), greater<int>());
+    
+    int idx = 0;
     int answer = 0;
     while (!q.empty()) {
         auto curr = q.front();
         q.pop();
         
-        bool is_highest = true;
-        for (int i = 0; i < q.size(); i++) {
-            auto wait = q.front();
-            q.pop(); q.push(wait);
-            if (wait.first > curr.first) is_highest = false;
-        }
-        
-        if (is_highest) {
+        if (priorities[idx] == curr.first) {
             answer++;
+            idx++;
+            
             if (curr.second == location) return answer;
         } else {
             q.push(curr);
         }
     }
+    
+    return answer;
 }
