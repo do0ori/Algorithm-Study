@@ -7,7 +7,6 @@ int bfs(vector<vector<int>>& maps) {
     queue<pair<int, int>> q;
     q.push({0, 0});
     int cnt = 1;
-    maps[0][0]++;
     const vector<pair<int, int>> D = {
         {-1, 0},
         {1, 0},
@@ -16,24 +15,20 @@ int bfs(vector<vector<int>>& maps) {
     };
     
     while (!q.empty()) {
-        int qs = q.size();
-        for (int i = 0; i < qs; i++) {
-            auto [x, y] = q.front();
-            q.pop();
-            
-            if (x == N - 1 && y == M - 1) {
-                return cnt;
-            }
-            
-            for (auto [dx, dy] : D) {
-                int nx = x + dx, ny = y + dy;
-                if (0 <= nx && nx < N && 0 <= ny && ny < M && maps[nx][ny] == 1) {
-                    maps[nx][ny]++;
-                    q.push({nx, ny});
-                }
+        auto [x, y] = q.front();
+        q.pop();
+
+        if (x == N - 1 && y == M - 1) {
+            return maps[x][y];
+        }
+
+        for (auto [dx, dy] : D) {
+            int nx = x + dx, ny = y + dy;
+            if (0 <= nx && nx < N && 0 <= ny && ny < M && maps[nx][ny] == 1) {
+                maps[nx][ny] = maps[x][y] + 1;
+                q.push({nx, ny});
             }
         }
-        cnt++;
     }
     
     return -1;
