@@ -10,10 +10,9 @@ for _ in range(N):
     medals[(gold, silver, copper)].append(nation)
 sorted_by_medals = sorted(medals, reverse=True)
 
-rank = 0
+rank = 1
 for medal in sorted_by_medals:
-    rank = len(medals[medal])
     if K in medals[medal]:
+        print(rank)
         break
-
-print(rank)
+    rank += len(medals[medal])
