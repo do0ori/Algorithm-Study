@@ -1,10 +1,10 @@
 # [level 2] 행렬 테두리 회전하기 - 77485 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/77485?language=javascript) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/77485?language=cpp) 
 
 ### 성능 요약
 
-메모리: 40.1 MB, 시간: 10.56 ms
+메모리: 7.08 MB, 시간: 6.64 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2023년 12월 2일 23:26:11
+2026년 04월 10일 22:32:27
 
 ### 문제 설명
 
